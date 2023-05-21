@@ -1,0 +1,7 @@
+Kivy==2.1.0
+kivymd==1.0.2
+matplotlib==3.2.2
+pandas==1.5.3
+pyserial==3.5
+Requests==2.30.0
+seaborn==0.12.2

@@ -1,0 +1,312 @@
+#: import utils kivy.utils
+#: import MapView kivy.garden.mapview.MapView
+<TooltipMDIconButton@MDIconButton+MDTooltip>
+
+<HistoricScreen>:
+	BoxLayout:
+		orientation: "vertical"
+		canvas:
+			Color:
+				rgba: utils.get_color_from_hex("#0b172e")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		Spacer:
+			size_hint: (1, 0.005)
+		
+		BoxLayout:
+			orientation: "vertical"
+			size_hint: (0.98, 0.90)
+			pos_hint: {"right": 0.99}
+			
+			BoxLayout:
+				orientation: "vertical"
+				size_hint: (1, 0.03)
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+
+	
+				Spinner:
+					size_hint: (0.4, 0.02)
+					pos_hint: {"right": 0.72}
+					id: spinner_id
+					font_name: 'barlow-bold'
+					#font_size: "20sp"
+					text: "Time frame: 1 Hour"
+					values: ["1 Hour", "1 Day", "1 Week", "1 Month"]
+					
+					on_text: app.spinner_clicked(spinner_id.text)
+					
+			Spacer:
+				size_hint: (1, 0.005)
+
+			
+			BoxLayout:
+				orientation: "horizontal"
+				size_hint: (1, 0.35)
+				spacing: "5"		#Constant space between the children
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						
+				BoxLayout:
+		            orientation: "horizontal"
+		            size_hint: (0.03, 1)
+		            canvas:
+		                Color:
+		                    rgba: utils.get_color_from_hex("#1b203e")
+		                RoundedRectangle:
+		                    size: self.size
+		                    pos: self.pos
+					TooltipMDIconButton:
+						#source: "icons/historic-data3.png"
+						icon: "icons/real-time-data.png"
+						tooltip_text: "Real-time data"
+						size_hint: (0.1, 0.16)
+						pos_hint: {"center_x": .5, "center_y": .5}
+						on_release: app.process_dashboard()
+				
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.265, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Average Flow Rate"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Label:
+						id: avg_flow_rate
+						text: ""
+						size_hint: (1, 0.8)
+						font_size: "85sp"
+						font_name: 'barlow-bold'
+						color: 0.0039, 0.4392, 0.984, 1
+					Label:
+						id: avg_flow_time
+						text: ""
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.03)
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.265, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Peak Flow Rate"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Label:
+						id: peak_flow_rate
+						text: ""
+						size_hint: (1, 0.8)
+						font_size: "85sp"
+						font_name: 'barlow-bold'
+						color: 0.0039, 0.4392, 0.984, 1
+					Label:
+						id: vol_dis_time
+						text: ""
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.03)				
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.265, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Cumulative Flow Rate"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Label:
+						id: cum_vol_num
+						text: ""
+						size_hint: (1, 0.8)
+						font_size: "85sp"
+						font_name: 'barlow-bold'
+						color: "#DFFF00"
+					Label:
+						id: cum_vol_time
+						text: ""
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.03)					
+						
+##------------------------------------------------ End of row 1-------------------------------------------------------------------##
+						
+			Spacer:
+				size_hint: (1, 0.015)
+				
+			BoxLayout:
+				orientation: "horizontal"
+				size_hint: (1, 0.35)
+				spacing: "5"
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					Rectangle:
+						size: self.size
+						pos: self.pos
+				BoxLayout:
+		            orientation: "horizontal"
+		            size_hint: (0.03, 1.15)
+		            canvas:
+		                Color:
+		                    rgba: utils.get_color_from_hex("#1b203e")
+		                RoundedRectangle:
+		                    size: self.size
+		                    pos: self.pos
+					TooltipMDIconButton:
+						#source: "icons/historic-data3.png"
+						icon: "icons/historic-data3.png"
+						tooltip_text: "Historic data"
+						size_hint: (0.1, 0.16)
+						pos_hint: {"center_x": .5, "center_y": .5}
+						on_release: app.process_historic()
+				BoxLayout:
+					id: graph
+					orientation: "vertical"
+					size_hint: (0.8, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.02)
+					Label:
+						text: "Flow Rate Over Time"
+						size_hint: (1,0.1)
+						pos_hint: {"right": 0.99}
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.05)
+					BoxLayout:
+						id: graph2
+						orientation: "vertical"
+						size_hint: (1, 1)
+						pos_hint: {"right": 1}
+						canvas:
+							Color:
+								rgba: utils.get_color_from_hex("#1b203e")
+							RoundedRectangle:
+								size: self.size
+								pos: self.pos
+					Spacer:
+						size_hint: (1, 0.15)
+					
+
+
+##----------------------------------------------------------End of row 2---------------------------------------------------------##
+
+            Spacer:
+                size_hint:(1,0.015)
+			BoxLayout:
+				orientation: "horizontal"
+				size_hint: (1, 0.32)
+				spacing: "5"
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					Rectangle:
+						size: self.size
+						pos: self.pos
+				BoxLayout:
+		            orientation: "horizontal"
+		            size_hint: (0.03, 1.15)
+		            canvas:
+		                Color:
+		                    rgba: utils.get_color_from_hex("#1b203e")
+		                RoundedRectangle:
+		                    size: self.size
+		                    pos: self.pos
+					TooltipMDIconButton:
+						icon: "icons/configure.png"
+						tooltip_text: "Configuration"
+						size_hint: (0.1, 0.16)
+						pos_hint: {"center_x": .5, "center_y": .5}
+						on_release: app.process_configuration()
+						
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.8, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.02)
+					Label:
+						text: "Average Flow Rate"
+						size_hint: (1,0.1)
+						pos_hint: {"right": 0.99}
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.05)
+					BoxLayout:
+						id: graph3
+						orientation: "vertical"
+						size_hint: (1, 1)
+						pos_hint: {"right": 1}
+						canvas:
+							Color:
+								rgba: utils.get_color_from_hex("#1b203e")
+							RoundedRectangle:
+								size: self.size
+								pos: self.pos
+					Spacer:
+						size_hint: (1, 0.18)
+                        
+			Spacer:
+				size_hint: (1, 0.03)
+				
+						

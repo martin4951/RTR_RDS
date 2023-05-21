@@ -1,0 +1,424 @@
+#: import utils kivy.utils
+#: import MapView kivy.garden.mapview.MapView
+<TooltipMDIconButton@MDIconButton+MDTooltip>
+
+<DashboardScreen>:
+	BoxLayout:
+		orientation: "vertical"
+		canvas:
+			Color:
+				rgba: utils.get_color_from_hex("#0b172e")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		Spacer:
+			size_hint: (1, 0.03)
+		
+		BoxLayout:
+			orientation: "vertical"
+			size_hint: (0.98, 0.90)
+			pos_hint: {"right": 0.99}
+			BoxLayout:
+				orientation: "horizontal"
+				size_hint: (1, 0.35)
+				spacing: "5"		#Constant space between the children
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						
+				BoxLayout:
+		            orientation: "horizontal"
+		            size_hint: (0.03, 1)
+		            canvas:
+		                Color:
+		                    rgba: utils.get_color_from_hex("#1b203e")
+		                RoundedRectangle:
+		                    size: self.size
+		                    pos: self.pos
+					TooltipMDIconButton:
+						#source: "icons/historic-data3.png"
+						icon: "icons/real-time-data.png"
+						tooltip_text: "Real-time data"
+						size_hint: (0.1, 0.16)
+						pos_hint: {"center_x": .5, "center_y": .5}
+						#on_release: app.process_realtime()
+				
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.35, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "VFR [L/m]"
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						size_hint: (1, 0.1)
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.1)
+					Image:
+						id: temp_sensor_img_id
+						source: ""
+						size_hint: (0.6, 0.6)
+						pos_hint: {"right": 0.8}
+					Label:
+						id: temp_sensor_label_id
+						text: ""
+						font_size: "30sp"
+						color: 0.0039, 0.4392, 0.984, 1
+						font_name: 'barlow-bold'
+						size_hint: (1,0.3)
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.35, 1)
+					MapView:
+						id: map
+						lat: 53.32714322677819
+						lon: -6.229399009545262
+						zoom: 17
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.15, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Previous Flow Rate"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "25sp"
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Label:
+						id: prev_flow_rate
+						text: ""
+						size_hint: (1, 0.8)
+						font_size: "70sp"
+						font_name: 'barlow-bold'
+						color: 0.0039, 0.4392, 0.984, 1
+					Label:
+						text: "L/m"
+						size_hint: (1, 0.1)
+						font_size: "25sp"
+						font_name: 'barlow-bold'
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.03)
+				
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.15, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Average Flow Rate"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "25sp"
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Label:
+						id: avg_flow_rate
+						text: ""
+						size_hint: (1, 0.8)
+						font_size: "70sp"
+						font_name: 'barlow-bold'
+						color: 0.0039, 0.4392, 0.984, 1
+					Label:
+						text: "L/m"
+						size_hint: (1, 0.1)
+						font_size: "25sp"
+						font_name: 'barlow-bold'
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.03)
+						
+##------------------------------------------------ End of row 1-------------------------------------------------------------------##
+						
+			Spacer:
+				size_hint: (1, 0.015)
+				
+			BoxLayout:
+				orientation: "horizontal"
+				size_hint: (1, 0.35)
+				spacing: "5"
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					Rectangle:
+						size: self.size
+						pos: self.pos
+				BoxLayout:
+		            orientation: "horizontal"
+		            size_hint: (0.03, 1.15)
+		            canvas:
+		                Color:
+		                    rgba: utils.get_color_from_hex("#1b203e")
+		                RoundedRectangle:
+		                    size: self.size
+		                    pos: self.pos
+					TooltipMDIconButton:
+						#source: "icons/historic-data3.png"
+						icon: "icons/historic-data3.png"
+						tooltip_text: "Historic data"
+						size_hint: (0.1, 0.16)
+						pos_hint: {"center_x": .5, "center_y": .5}
+						on_release: app.process_historic()
+				BoxLayout:
+					id: graph
+					orientation: "vertical"
+					size_hint: (0.7, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.02)
+					Label:
+						text: "Graph"
+						size_hint: (1,0.1)
+						pos_hint: {"right": 0.99}
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.05)
+					BoxLayout:
+						id: graph1
+						orientation: "vertical"
+						size_hint: (1, 1)
+						pos_hint: {"right": 1}
+						canvas:
+							Color:
+								rgba: utils.get_color_from_hex("#1b203e")
+							RoundedRectangle:
+								size: self.size
+								pos: self.pos
+					Spacer:
+						size_hint: (1, 0.15)
+						
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.15, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Total Transmissions"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "25sp"
+						pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Label:
+						id: transmission_rate
+						text: "0"
+						size_hint: (1, 0.8)
+						font_size: "65sp"
+						font_name: 'barlow-bold'
+						color: 0.0039, 0.4392, 0.984, 1
+					Label:
+						text: "Last TX time: "
+						id: last_tx_time
+						size_hint: (1, 0.1)
+						font_size: "15sp"
+						font_name: 'barlow-bold'
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.03)
+
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.15, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+					Label:
+						text: "Battery"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "25sp"
+						#pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+					Spacer:
+						size_hint: (1, 0.1)
+					Image:
+						id: bat2_img_id
+						source: "icons/bat4.png"
+						size_hint: (0.7, 0.8)
+						pos_hint: {"right": 0.9}
+
+
+##----------------------------------------------------------End of row 2---------------------------------------------------------##
+
+            Spacer:
+                size_hint:(1,0.015)
+			BoxLayout:
+				orientation: "horizontal"
+				size_hint: (1, 0.32)
+				spacing: "5"
+				canvas:
+					Color:
+						rgba: utils.get_color_from_hex("#0b172e")
+					Rectangle:
+						size: self.size
+						pos: self.pos
+				BoxLayout:
+		            orientation: "horizontal"
+		            size_hint: (0.03, 1.15)
+		            canvas:
+		                Color:
+		                    rgba: utils.get_color_from_hex("#1b203e")
+		                RoundedRectangle:
+		                    size: self.size
+		                    pos: self.pos
+					TooltipMDIconButton:
+						icon: "icons/configure.png"
+						tooltip_text: "Configuration"
+						size_hint: (0.1, 0.16)
+						pos_hint: {"center_x": .5, "center_y": .5}
+						on_release: app.process_configuration()
+						
+				BoxLayout:
+					orientation: "vertical"
+					size_hint: (0.69, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					Spacer:
+						size_hint: (1, 0.05)
+						
+                    Label:
+						text: "Bar Chart"
+						size_hint: (1, 0.1)
+						font_name: 'barlow-bold'
+						font_size: "20sp"
+						#pos_hint: {"right": 0.99}
+						color: utils.get_color_from_hex("5D87A1")
+                    Spacer:
+						size_hint: (1, 0.03)
+                    MDBoxLayout:
+                    	id: bargraph
+                        orientation: "horizontal"
+                        size_hint : (1,0.9)
+                    	
+
+                        
+
+				BoxLayout:
+					orientation: "horizontal"
+					size_hint: (0.3, 1)
+					canvas:
+						Color:
+							rgba: utils.get_color_from_hex("#1b203e")
+						RoundedRectangle:
+							size: self.size
+							pos: self.pos
+					
+	                BoxLayout:
+	                    orientation: "vertical"
+	                    size_hint: (0.15,1)
+	                    canvas:
+	                        Color:
+	                            rgba: utils.get_color_from_hex("#1b203e")
+	                        RoundedRectangle:
+	                            size: self.size
+	                            pos : self.pos
+						Spacer:
+							size_hint: (1, 0.05)
+					
+	                    Label:
+							text: "Power Save Mode 1"
+							size_hint: (1, 0.1)
+							font_name: 'barlow-bold'
+							font_size: "20sp"
+							#pos_hint: {"right": 0.99}
+							color: utils.get_color_from_hex("5D87A1")
+	
+	                    ImageButton:
+	                        source: "icons/switchoff.png"
+	                        size_hint:(1,0.7)
+	                        id: switch_1_id
+	                        on_release: app.process_switch1()
+	                    Label:
+	                        text: "OFF"
+	                        id: switch_1_label_id
+	                        size_hint:(1,0.1)
+	                        font_name :'barlow-bold'
+	                        color :utils.get_color_from_hex("#0b172e")
+	
+	                BoxLayout:
+	                    orientation: "vertical"
+	                    size_hint: (0.15,1)
+	                    canvas:
+	                        Color:
+	                            rgba: utils.get_color_from_hex("#1b203e")
+	                        RoundedRectangle:
+	                            size: self.size
+	                            pos : self.pos
+	                    
+	                    Spacer:
+							size_hint: (1, 0.05)
+	                    
+	                    Label:
+							text: "Power Save Mode 2"
+							size_hint: (1, 0.1)
+							font_name: 'barlow-bold'
+							font_size: "20sp"
+							#pos_hint: {"right": 0.99}
+							color: utils.get_color_from_hex("5D87A1")
+	
+	                    ImageButton:
+	                        source: "icons/switchon.png"
+	                        size_hint:(1,0.7)
+	                        id: switch_2_id
+	                        on_release: app.process_switch2()
+	                    Label:
+	                        text: "ON"
+	                        id: switch_2_label_id
+	                        size_hint:(1,0.1)
+	                        font_name :'barlow-bold'
+	                        color :utils.get_color_from_hex("#27eea0")
+
+
+							
+			Spacer:
+				size_hint: (1, 0.03)
+						
