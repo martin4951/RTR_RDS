@@ -24,8 +24,8 @@ import pandas as pd
 import time
 import statistics
 
-sensor_id = "sensor-352656103315837"        #RTR device
-#sensor_id = "sensor-352656103316116"       #Mike test device
+#sensor_id = "sensor-352656103315837"
+sensor_id = "sensor-352656103316116"
 
 #Global variables
 x_plot1 = []
@@ -319,9 +319,9 @@ class MainApp(MDApp):
                 week_fr_sum = sum(week_fr_mean_list)
 
                 
-                week_fr_mean = round(week_fr_mean, 2)
-                week_fr_peak = round(week_fr_peak, 2)
-                week_fr_sum = round(week_fr_sum, 2)
+                week_fr_mean = round(week_fr_mean, 1)
+                week_fr_peak = round(week_fr_peak, 1)
+                week_fr_sum = round(week_fr_sum, 1)
                 
                  
                 self.root.ids['historic_screen'].ids['avg_flow_rate'].text = f"{week_fr_mean}L/m"
@@ -353,7 +353,7 @@ class MainApp(MDApp):
         
                 x1_string = list(map(str, x_plot_his_cor))
                 y1_string = list(map(str, l_per_m))
-
+                
         
                 def update_annot(ind, x_toplot, y_toplot):
                     x,y = line.get_data()
@@ -529,9 +529,9 @@ class MainApp(MDApp):
                 week_fr_sum = sum(week_fr_mean_list)
 
                 
-                week_fr_mean = round(week_fr_mean, 2)
-                week_fr_peak = round(week_fr_peak, 2)
-                week_fr_sum = round(week_fr_sum, 2)
+                week_fr_mean = round(week_fr_mean, 1)
+                week_fr_peak = round(week_fr_peak, 1)
+                week_fr_sum = round(week_fr_sum, 1)
                 
                  
                 self.root.ids['historic_screen'].ids['avg_flow_rate'].text = f"{week_fr_mean}L/m"
@@ -728,6 +728,7 @@ class MainApp(MDApp):
             
             y_plot_his_cor = tuple(y - tof_corrected for y in y_plot_his)
             l_per_m = tuple(y * convert_l_m for y in y_plot_his_cor)
+            l_per_m = [round(x, 1) for x in l_per_m]
             
             
                 
@@ -738,9 +739,9 @@ class MainApp(MDApp):
                 week_fr_sum = sum(week_fr_mean_list)
 
                 
-                week_fr_mean = round(week_fr_mean, 2)
-                week_fr_peak = round(week_fr_peak, 2)
-                week_fr_sum = round(week_fr_sum, 2)
+                week_fr_mean = round(week_fr_mean, 1)
+                week_fr_peak = round(week_fr_peak, 1)
+                week_fr_sum = round(week_fr_sum, 1)
 
                  
                 self.root.ids['historic_screen'].ids['avg_flow_rate'].text = f"{week_fr_mean}L/m"
@@ -945,9 +946,9 @@ class MainApp(MDApp):
                 week_fr_sum = sum(week_fr_mean_list)
 
                 
-                week_fr_mean = round(week_fr_mean, 2)
-                week_fr_peak = round(week_fr_peak, 2)
-                week_fr_sum = round(week_fr_sum, 2)
+                week_fr_mean = round(week_fr_mean, 1)
+                week_fr_peak = round(week_fr_peak, 1)
+                week_fr_sum = round(week_fr_sum, 1)
 
                  
                 self.root.ids['historic_screen'].ids['avg_flow_rate'].text = f"{week_fr_mean}L/m"
@@ -1286,11 +1287,11 @@ class MainApp(MDApp):
                 l_per_m = tuple(y * convert_l_m for y in y_plot1_cor)
 
                 cur_flow_rate = l_per_m[-1]
-                cur_flow_rate = str(round(cur_flow_rate, 2))
+                cur_flow_rate = str(round(cur_flow_rate, 1))
                 prev_flow_rate = l_per_m[-2]
-                prev_flow_rate = str(round(prev_flow_rate, 2))
+                prev_flow_rate = str(round(prev_flow_rate, 1))
                 avg_flow_rate = sum(l_per_m) / len(l_per_m)
-                avg_flow_rate = str(round(avg_flow_rate, 2))
+                avg_flow_rate = str(round(avg_flow_rate, 1))
         except:
             print("Errorino MDB")
         
